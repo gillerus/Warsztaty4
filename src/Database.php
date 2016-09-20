@@ -1,27 +1,30 @@
 <?php
 
-class Database {
+// get conn, close conn select, insert, update, delete;
 
-    static public $conn = null;
-    static private $host = 'localhost';
-    static private $login = 'root';
-    static private $pass = 'coderslab';
-    static private $db = 'shop';
+class DataBase {
 
-    static public function getConnection() {
-        self::$conn = new mysqli(self::$host, self::$login, self::$pass, self::$db);
-        self::$conn->set_charset("utf8");
-        if (mysqli_connect_errno()) {
-            echo 'There is an error ' . mysqli_connect_error();
-            die;
+    static private $db_localhost = "localhost";
+    static private $db_user = "root";
+    static private $db_pass = "coderslab";
+    static private $db_name = "shop";
+
+    public static function conn() {
+        $conn = new mysqli(self::$db_localhost, self::$db_user, self::$db_pass, self::$db_name);
+        
+        if ($conn->connect_error) {
+            die("Poloczenie nieudane. Blad: " . $conn->connect_errno);
         } else {
-            return self::$conn;
+//            echo "Polaczenie udane";
+            return $conn;
         }
     }
 
-    static public function closeConnection() {
-        self::$conn->close();
-        self::$conn = null;
+    public static function closeConn(mysqli $conn) {
+        $conn->close();
+        $conn = null;
+        
+        return true;
     }
 
 }

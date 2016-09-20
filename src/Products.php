@@ -44,29 +44,29 @@ class Product {
     public function getName() {
         return $this->name;
     }
+    
+    public function setName($name) {
+        $this->name = $name;
+    }
 
     public function getPrice() {
         return $this->price;
+    }
+    
+    public function setPrice($price) {
+        $this->price = $price;
     }
 
     public function getDescription() {
         return $this->description;
     }
+    
+     public function setDescription($description) {
+        $this->description = $description;
+    }
 
     public function getStock() {
         return $this->stock;
-    }
-
-    public function setPrice($price) {
-        $this->price = $price;
-    }
-
-    public function setName($name) {
-        $this->name = $name;
-    }
-
-    public function setDescription($description) {
-        $this->description = $description;
     }
 
     public function setStock($stock) {
