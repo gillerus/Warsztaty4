@@ -58,7 +58,7 @@ class Users {
         return $this->hashedPassword;
     }
 
-    public function setPassword($setPassword) {
+    public function setHashedPassword($setPassword) {
         $newHashedPassword = password_hash($setPassword, PASSWORD_BCRYPT);
         $this->hashedPassword = $newHashedPassword;
         return $this->hashedPassword;
@@ -77,7 +77,7 @@ class Users {
 
         if ($this->id == -1) {
 
-            $sql = "INSERT INTO Users(name, surname, email, hashedPassword, address) VALUES ('$this->name', '$this->surname', '$this->email', '$this->hashedPassword', '$this->address')";
+            $sql = "INSERT INTO Users(name, surname, email, hashed_hassword, address) VALUES ('$this->name', '$this->surname', '$this->email', '$this->hashedPassword', '$this->address')";
 
             $result = $connection->query($sql);
 

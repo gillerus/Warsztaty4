@@ -2,6 +2,11 @@
 
 session_start();
 
+if((!isset($_POST['email'])) || (!isset($_POST['password']))){
+    header('Location: shop.php');
+    exit();
+}
+
 require 'src/Database.php';
 
 $conn = DataBase::conn();
@@ -14,8 +19,6 @@ if (isset($email) && isset($password)) {
     $sql = 'SELECT * FROM Users WHERE email="' . $email . '"';
 
     $result = $conn->query($sql);
-    $user_amm = $result->num_rows;
-
 
     $row = $result->fetch_assoc();
 
@@ -25,11 +28,13 @@ if (isset($email) && isset($password)) {
 
         unset($_SESSION['error']);
         $result->free_result();
-
-        header('location: shop.php');
+        $_SESSION['zalogowany'] = true;
+        $_SESSION['id'] = $row['id'];
+        
+        header('location: index.php');
     } else {
         $_SESSION['error'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
-        header('location: index.php');
+        header('location: shop.php');
     }
 }
 DataBase::closeConn($conn);
