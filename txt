@@ -1,0 +1,5 @@
+co nie działa
+
+rejestracja udana chociaż nie ma wpisów do db?
+
+dzwine wpisy do db?

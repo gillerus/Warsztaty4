@@ -11,7 +11,7 @@ class DataBase {
 
     public static function conn() {
         $conn = new mysqli(self::$db_localhost, self::$db_user, self::$db_pass, self::$db_name);
-        
+
         if ($conn->connect_error) {
             die("Poloczenie nieudane. Blad: " . $conn->connect_errno);
         } else {
@@ -23,7 +23,7 @@ class DataBase {
     public static function closeConn(mysqli $conn) {
         $conn->close();
         $conn = null;
-        
+
         return true;
     }
 

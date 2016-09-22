@@ -22,9 +22,19 @@ if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true)) {
 
             <h4>Witamy na stronie [R] [S] [I] czyli Randomowego Sklepu Internetowego</h4>
             <br/>
+            <p>
+                <?php
+                if(isset($_SESSION['reg_succes'])) {
+                    if ($_SESSION['reg_succes'] == true) {
+                        echo 'Dziękujemy, rejestracja udana';
+                        unset($_SESSION['reg_succes']);
+                    }
+                }
+                ?>
+            </p>
             <h4>Zaloguj się:</h4>
             <form action="zaloguj.php" method="post">
-                <table class="table table-striped">
+                <table class="table-striped">
                     <tr>
                         <td> Email:</td><td> <input type="text" name="email"></td>
                     </tr>
@@ -45,7 +55,7 @@ if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true)) {
             <hr/>
             <h4>Zarejestruj się:</h4>
             <form action="register.php" method="post">
-                <table class="table table-striped">
+                <table class="table-striped">
                     <tr>
                         <td>Name:</td> <td><input type="text" name="name_reg"></td>
                     </tr>
@@ -83,7 +93,15 @@ if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true)) {
                         </td>
                     </tr>
                     <tr>
-                        <td><div class="g-recaptcha" data-sitekey="6Lc8UAcUAAAAADntDCNiamqoA7q0N6cAmWWSWhHm"></div></td>
+                        <td><div class="g-recaptcha" data-sitekey="6LfEWQcUAAAAAI7w4z7euG6ws-LVKqKMVQG0xx3q"></div></td>
+                        <td>
+                            <?php
+                            if (isset($_SESSION['e_bot'])) {
+                                echo $_SESSION['e_bot'];
+                                unset($_SESSION['e_bot']);
+                            }
+                            ?>
+                        </td>
                     </tr>
                     <tr>
                         <td><input type="submit" value="Zarejestruj się"></td>
